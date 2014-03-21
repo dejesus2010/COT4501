@@ -1,3 +1,20 @@
+%% Numerical Analysis Homework 5
+
+%% Review 4.1
+% True
+
+%% Review 4.2
+% False
+
+%% Review 4.3
+% False
+
+%% Review 4.4
+% False
+
+%% Review 4.6
+% True
+
 %% Exercise 4.1
 % (a) Prove that 5 is an eigenvalue of the matrix
 A = [6 3 3 1; 0 7 4 5; 0 0 5 4; 0 0 0 8];
@@ -110,9 +127,27 @@ disp(v(1:end,2));
 %  |1|     | xn|
 
 %% Exercise 4.8
-%
+% A similarity transformation uses a non-singular matrix T to diagonalize
+% some matrix A. We know T must be non-singular because the transformation
+% involves T^-1 and only non-singular matrices are invertible. From that we
+% can see:
 
-%% Computer Prob 4.2
+%%
+%  T^-1*A*T = T^-1*A[x1|x2|...|xn]
+%           = T^-1*[Ax1|Ax2|...|Axn]
+%           = T^-1*[lambda1*x1|labda2*x2|...|lambdan*xn]
+%           = T^-1*[lambda1*(T*e1)|labda2*(T*e2)|...|lambdan*(T*en)]
+%           = T^-1*[T*(lambda1*e1)|T*(labda2*e2)|...|T*(lambdan*en)]
+%           = T^-1*T*[lambda1*e1|lambda1*e2|...|lambdan*en]
+%           = In*[lambda1*e1|lambda1*e2|...|lambdan*en]
+%           = [lambda1*e1|lambda1*e2|...|lambdan*en]
+%           = D
+%  (note: e is the standard unit vector)
+%
+%  This means the matrix can be transformed using a similarity
+%  transformation.
+
+%% Computer Problem 4.2
 %
 % (a) Implement power iteration to compute the dominant eigenvalue and a
 % corresponding eigenvector of the matrix A:
@@ -194,15 +229,15 @@ disp(x2);
 
 %% Computer Problem 4.3
 %
-%  a) Implementing inverse iteration to find the eigenvector and corresponding
-%  eigenvalue closest to 2
+% a) Implementing inverse iteration to find the eigenvector and corresponding
+% eigenvalue closest to 2
 
 A = [6 2 1; 2 3 1; 1 1 1];
 x = rand(3,1); %arbitrary starting vector
 for k = 1:5 % 5 iterations
     shift = 2; %using 2 as our shift value
     x = (A - eye(3)*shift) \ x; %compute the next iteration of the vector
-    x = x / norm(x) %normalizing
+    x = x / norm(x); %normalizing
 end
 eigenvector = x
 lambda = norm(A*x) / norm(x)
@@ -211,7 +246,7 @@ lambda = norm(A*x) / norm(x)
 %  b) Calculating eigenvectors/values using a library routine.
 [V,D] = eig(A)
 
-%
+%%
 %  The calculated eigenvalue/eigenvector appears to be the same with the
 %  amount of precision shown. The values converged quickly to the correct
 %  output when using inverse iteration.

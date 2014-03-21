@@ -89,9 +89,37 @@ disp(v(1:end,2));
 %
 
 %% Exercise 4.8
+%  (a)
+%  
+%  Matrix A & row sums:
+%  |a11 a12 . . a1n| row1 sum = a11 + ... + a1n = alpha 
+%  |a21 .  .  . a2n| ...
+%  | .  .  .  .  . | ...
+%  | .  .  .  .  . | ...
+%  |an1 .  .  . ann| rown sum = an1 + ... + ann = alpha
 %
-A = [0 0 1 4 ; 0 2 -2 2 ; 1 -2 1 3; 1 -2 1 3 ]
-eig(A)
+%  A*x:
+%  |a11 a12 . . a1n| | x1| = a11*x1 + ... + a1n*x1 = (a11 + ... + a1n)*x1 = alpha*x1
+%  |a21 .  .  . a2n| | x2| = a21*x2 + ... + a2n*x2 = (a21 + ... + a2n)*x2 = alpha*x2
+%  | .  .  .  .  . | | . | ...
+%  | .  .  .  .  . | | . | ...
+%  |an1 .  .  . ann| | xn| = an1*xn + ... + ann*x2 = (an1 + ... + ann)*xn = alpha*xn
+%
+%  A*x is equivalent to... 
+%  alpha*x1     =           | x1|
+%  alpha*x2     =           | x2|
+%  ...          =  alpha *  | . |   => Ax = alpha*x, which is the
+%  alpha*xn-1   =           | . |           definition of an eigenvalue
+%  alpha*xn     =           | xn|
+%
+%  (b)
+%  
+%  The eigenvector would be:
+%  |1|     | x1|
+%  |.|     | . |
+%  |.|  =  | . |
+%  |.|     | . |
+%  |1|     | xn|
 
 %% Computer Prob 4.2
 %

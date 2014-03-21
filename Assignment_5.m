@@ -25,7 +25,8 @@ disp(V);
 %% Exercise 4.3
 %
 %%
-% (a) det(A-$\lambda$I) = (1-$\lambda$)($1-$\lambda$)-4 = 0 
+% $(a)\ det(A- \lambda I) = (1- \lambda )(1- \lambda )-4 = 0$
+
 % = (1-$\lambda$)^2 - 4 = 0
 %
 %%

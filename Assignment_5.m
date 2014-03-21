@@ -77,18 +77,6 @@ disp(v(1:end,2));
 % the shift.
 
 %% Exercise 4.5
-%
-% (a) The eigenvalues can theoretically be calculated by solving
-% the characteristic equation produced from det(A-$\lambda$I) = 0
-% as long as the degree of the characteristic equation be no larger than
-% 4. Otherwise, other steps must be taken...
-% The characteristic equation will be in the form:
-%
-% $p(\lambda) = c_0 + c_1\lambda + ... + c_n\lambda^n$
-%
-%
-
-%% Exercise 4.8
 %  (a)
 %  
 %  Matrix A & row sums:
@@ -120,6 +108,9 @@ disp(v(1:end,2));
 %  |.|  =  | . |
 %  |.|     | . |
 %  |1|     | xn|
+
+%% Exercise 4.8
+%
 
 %% Computer Prob 4.2
 %

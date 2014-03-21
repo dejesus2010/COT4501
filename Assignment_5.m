@@ -1,19 +1,19 @@
 %% Numerical Analysis Homework 5
 
 %% Review 4.1
-% True
+% True [p. 161, para 1]
 
 %% Review 4.2
-% False
+% False [p. 159, para 2]
 
 %% Review 4.3
-% False
+% False  [i.e. any vector is an eigenvector with an eigenvalue of one if the matrix is the identity matrix]
 
 %% Review 4.4
-% False
+% False [see example 4.9 for one instance]
 
 %% Review 4.6
-% True
+% True 
 
 %% Exercise 4.1
 % (a) Prove that 5 is an eigenvalue of the matrix

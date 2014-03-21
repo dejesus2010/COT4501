@@ -143,7 +143,7 @@ disp(first_eig_vec_answer);
 %
 % (b) Using any of the method for deflation given in Section 4.5.4, deflate out the eigenvalue found in part a
 
-H = house_matrix(first_eig_vec_answer)
+H = House_matrix(first_eig_vec_answer)
 H*first_eig_vec_answer
 Eig_Diag_Matrx = H*A*H'
 temp_Diag_Matrix = H*A*H';
@@ -192,5 +192,27 @@ disp(eig_vectors(1:end,3));
 disp('Vector corresponding to second dominant eigenvalue produced from our calculations:');
 disp(x2);
 
+%% Computer Problem 4.3
+%
+%  a) Implementing inverse iteration to find the eigenvector and corresponding
+%  eigenvalue closest to 2
 
+A = [6 2 1; 2 3 1; 1 1 1];
+x = rand(3,1); %arbitrary starting vector
+for k = 1:5 % 5 iterations
+    shift = 2; %using 2 as our shift value
+    x = (A - eye(3)*shift) \ x; %compute the next iteration of the vector
+    x = x / norm(x) %normalizing
+end
+eigenvector = x
+lambda = norm(A*x) / norm(x)
+
+%
+%  b) Calculating eigenvectors/values using a library routine.
+[V,D] = eig(A)
+
+%
+%  The calculated eigenvalue/eigenvector appears to be the same with the
+%  amount of precision shown. The values converged quickly to the correct
+%  output when using inverse iteration.
 

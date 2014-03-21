@@ -1,4 +1,4 @@
-function v = house_reflector( x )
+function v = House_reflector( x )
 
     [m,n] = size(x);
     x_norm = norm(x);

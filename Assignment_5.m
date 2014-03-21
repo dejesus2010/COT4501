@@ -7,7 +7,7 @@ disp(result);
 %%
 % (b) Exhibit an eigenvector of A corresponding to the eigenvalue 5
 % To answer this problem, we must solve Ax = 5*x = (A-5*eye(4))x = 0
-
+[A,B] = eig(A)
 AL = A - 5*eye(4);
 result = null(AL);
 disp('Eigenvector corresponding to eigenvector 5:');
@@ -33,89 +33,47 @@ disp(V);
 %
 %%
 % (c) What are the eigenvalues of A?
-A = [1 4; 1 1]
+A = [1 4; 1 1];
 eig(A)
 %%
 % (d) What are the eigenvectors of A?
-[v,d] = eig(A)
+[v,~] = eig(A)
 disp( 'Eigen Vectors of A are the column of the following matrix: ' )
 disp(v)
 %%
-% (e) Perform one iterator of power iteration on A using $x_0$ = [1 1]'
+% (e) Perform one iteration of power iteration on A using $x_0$ = [1 1]'
 %
 x0 = [1 1]';
 
 % The following is used for normalized power iteration:
-% Ax = A*x0;
-% LAMBDA = norm(Ax);
-% x0 = Ax / LAMBDA;
-% disp(LAMBDA);
-%
-% The following code is for power iteration:
-
 x1 = A*x0;
+LAMBDA = norm(x1);
+x1 = x1 / LAMBDA;
 disp(x1);
 
 %%
 % (f) To what eigenvector of A will power iteration ultimately converge?
-disp(x1);
+[v,d] = eig(A);
+
+%%
+% The power iteration will converge to the eigenvector corresponding to the
+% dominant eigenvalue (3) which is the eigenvector below.
+
+disp(v(1:end,1));
+
 %%
 % (h) To what eigenvector of A would inverse iteration ultimately converge?
 %
-% p.166 last sentence... The inverse iteration converges to the eigenvector
-% corresponding to the smallest eigenvalue of A
-% used the equation of p.177
-x0 = [1 1]';
-y = A \ x0;
-LAMBDA = norm(y);
-x0 = y/LAMBDA;
-disp('Eigenvector corresponding to the smallest eigenvalue of A:');
-disp(x0);
+% The inverse iteration converges to the eigenvector corresponding to the 
+% smallest eigenvalue of A (-1). [see p.166, last sentence.]
+
+disp(v(1:end,2));
 %%
 % (i) What eigen value of A would be obtained if inverse iteration were used with shift $\sigma = 2$?
 %
-% I THINK the answer is:
-x0 = [1 1]';
-y = (A - 2*eye(2) ) \ x0;
-LAMBDA = norm(y);
-x0 = y / LAMBDA;
-disp('Eigenvalue of A obtained if inverse iteration were used with shift = 2:');
-disp(LAMBDA);
-
-%% Exercise 4.4
-% 
-% Power iteration failes to converge to the eigenvector corresponding to
-% the dominant eigenvalue of A when the guessed eigenvector is 90 degrees
-% to the exact eigenvalue...
-%
-% Take for example the following:
-A = [1 4; 1 1];
-[v,d] = eig(A);
-disp('Eigenvalues of matrix A:');
-disp(eig(A));
-disp('The exact eigenvector corresponding to the dominant eigenvalue of A is:')
-v = v(1:end,1);
-disp(v(1:end,1));
-%%
-y = v;
-disp('A vector that is 90 degrees to the eigenvector corresponding to the dominant eigenvalue of A is:');
-
-% disp(y(2,1));
-y(2,1) = y(2,1)*-1;
-disp(y);
-% disp(y(2,1));
-% disp(v(1:end,1)'*y);
-
-for i = 1:500
-    y = A*y;
-    % LAMBDA = norm(y);
-    % y = y / LAMBDA
-end%for%
-
-disp('Converged Vector calculated using power iteration:');
-disp(y);
-disp('Exact Vector:');
-disp(v);
+% Inverse iteration with a shift of 2 will eventually converge on the
+% eigenvalue of 3 because the process approaches the eigenvalue closest to
+% the shift.
 
 %% Exercise 4.5
 %

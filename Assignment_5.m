@@ -147,6 +147,7 @@ disp(v(1:end,2));
 %  This means the matrix can be transformed using a similarity
 %  transformation.
 
+
 %% Computer Problem 4.2
 %
 % (a) Implement power iteration to compute the dominant eigenvalue and a

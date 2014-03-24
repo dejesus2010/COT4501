@@ -166,7 +166,7 @@ disp(v(1:end,2));
 %    LAMBDA;
 % end
 A = [2 3 2; 10 3 4; 3 6 1];
-x0 = [0 0 1]'
+x0 = [0 0 1]';
 [first_eig_vec_answer, first_eig_val_answer ] = Power_it(A,x0);
 disp('The dominant eigenvalue:');
 disp(first_eig_val_answer);
@@ -178,53 +178,64 @@ disp(first_eig_vec_answer);
 %
 % (b) Using any of the method for deflation given in Section 4.5.4, deflate out the eigenvalue found in part a
 
-H = House_matrix(first_eig_vec_answer)
-H*first_eig_vec_answer
-Eig_Diag_Matrx = H*A*H'
-temp_Diag_Matrix = H*A*H';
+H = House_matrix(first_eig_vec_answer);
+H*first_eig_vec_answer;
+Eig_Diag_Matrx = H*A*inv(H);
 %% 
 % Applying power iteration again to compute the second largest eigenvalue of the same matrix
 % Refer to page 179 for help
 
-Eig_Diag_Matrx = Eig_Diag_Matrx(2:end,2:end)
-x0 = rand(2,1)
-[second_eig_vec_answer, second_eig_val_answer] = Power_it(Eig_Diag_Matrx,x0)
+B = Eig_Diag_Matrx(2:end,2:end);
+x0 = rand(2,1);
+[second_eig_vec_answer, second_eig_val_answer] = Power_it(B,x0);
+
+% second_eig_vec_answer = V(:,1)
+% second_eig_val_answe = D(1)
 
 disp('The second largest absolute eigenvalue is:');
 disp(second_eig_val_answer);
 
-bT = temp_Diag_Matrix(1,2:end)
+bT = Eig_Diag_Matrx(1,2:end);
 
 alpha_num = bT*second_eig_vec_answer;
 alpha_den = second_eig_val_answer - first_eig_val_answer;
 
 alpha = alpha_num/alpha_den;
-right_matrix = [alpha; second_eig_vec_answer]
-x2 = inv(H)*right_matrix
+right_matrix = [alpha; second_eig_vec_answer];
+x2 = inv(H)*right_matrix;
+
+
 %%
-% (c) Use a general real eigensystem library routin to compute all of the
+disp('To enhance accuracy, the second eigenvalue and eigenvector found from the newly deflated matrix ');
+disp('is refined using inverse iteration on the original matirix with a shift equal to the approximate eigenvalue found from earlier calculations.');
+disp('.');
+disp('The eigenvector corresponding to the second largest absolute eigenvalue is:');
+[x2, second_eig_val_answer] = Inv_power_it(A,x2,second_eig_val_answer );
+x2 = -1 * x2
+%%
+% (c) Use a general real eigensystem library routine to compute all of the
 % eigenvalues and eigenvectors of the matrix, and compare the results with
 % those obtained in parts a and b
-[eig_vectors eig_values] = eig(A)
+[eig_vectors eig_values] = eig(A);
 
 disp('First largest absolute eigenvalue produced from eig(A):');
 disp(eig_values(1,1));
-disp('First dominant eigenvalue produced from our calculations:');
+disp('First dominant eigenvalue produced from our power iteration calculation:');
 disp(first_eig_val_answer);
 
 disp('Vector corresponding to second largest absolute eigenvalue produced from eig(A):');
 disp(eig_vectors(1:end,1));
-disp('Vector corresponding to second dominant eigenvalue produced from our calculations:');
+disp('Vector corresponding to second dominant eigenvalue produced from our power iteration calculation:');
 disp(first_eig_vec_answer);
 
 disp('Second largest absolute eigenvalue produced from eig(A):');
 disp(abs(eig_values(3,3)));
-disp('Second dominant eigenvalue produced from our calculations:');
+disp('Second dominant eigenvalue produced from our power iteration calculation:');
 disp(second_eig_val_answer);
 
 disp('Vector corresponding to second largest absolute eigenvalue produced from eig(A):');
 disp(eig_vectors(1:end,3));
-disp('Vector corresponding to second dominant eigenvalue produced from our calculations:');
+disp('Vector corresponding to second dominant eigenvalue produced from our power iteration calculation:');
 disp(x2);
 
 %% Computer Problem 4.3

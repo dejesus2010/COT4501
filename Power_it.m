@@ -2,7 +2,7 @@ function [ x, LAMBDA] = Power_it( A,x )
 
     [m,n] = size(A);
     %x = rand(m,1);
-    for i = 1:5000
+    for i = 1:10000
         x = A*x;
         LAMBDA = norm(x);
         x = x/LAMBDA;

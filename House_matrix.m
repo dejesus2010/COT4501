@@ -1,6 +1,6 @@
 function [ H ] = House_matrix( x )
 
-    v = House_reflector(x)
+    v = House_reflector(x);
 
     [n,m] = size(v);
     I = eye(n);

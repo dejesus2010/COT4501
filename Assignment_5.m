@@ -1,5 +1,7 @@
 %% Numerical Analysis Homework 5
-
+% Ryan DeJesus,
+% Daniel Gollahon,
+% Ron Quan
 %% Review 4.1
 % True [p. 161, para 1]
 
@@ -55,7 +57,7 @@ A = [1 4; 1 1];
 eig(A)
 %%
 % (d) What are the eigenvectors of A?
-[v,~] = eig(A)
+[v,~] = eig(A);
 disp( 'Eigen Vectors of A are the column of the following matrix: ' )
 disp(v)
 %%
@@ -144,8 +146,11 @@ disp(v(1:end,2));
 %           = D
 %  (note: e is the standard unit vector)
 %
-%  This means the matrix can be transformed using a similarity
-%  transformation.
+%  Since T^-1*A*T = D
+%  AT = DT, since all column of T are linearly independent (because it is
+%  non-singular ) this means the columns of T are eigenvectors with
+%  eigenvalues in D, so there are n linearly independent eigenvectors and this 
+%  means the matrix can be transformed using a similarity transformation.
 
 
 %% Computer Problem 4.2

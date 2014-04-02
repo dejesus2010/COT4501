@@ -14,7 +14,7 @@
 
 %% Review 5.4
 %
-% False. If the number of digits of accuracy is relatively small and the fixed number of digits you gain by linear convergence is considerably more than the initial accuracy gained by a superlinearly convergent method, it is possible that the method of linear convergence could be faster.  (p. ???)
+% False. If the number of digits of accurate information we obtain per iteration in a linear scheme is relatively large and the number of digits of accuracy we're eventually trying to obtain is relatively small, we may compute the necessary digits faster through a linear method as compared to a superlinear method. I.e. if we want 4 digits of accuracy and we can gain 4 digits per iteration with  a linear solution method, it is probably faster just to use one iteration of that function.
 
 %% Review 5.5
 %

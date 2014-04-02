@@ -18,7 +18,7 @@
 
 %% Review 5.5
 %
-% It would be better to use |f(xk)| small than |xk-xk-1| small as a termination criteria. Finding when |f(xk)| (the residual)  is small gives us an idea as to whether or not the problem has actually been solved. |xk+1-xk|/|xk| gives us a good diea of when the approximate solution has stopped changing significantly. The |xk-xk-1| is not as good because it's not relative to |xk-1|. (p. 223)
+% For an ill-conditioned problem, |f(xk)| can be small without xk being close to the true solution, x*. We want the distance between |xk - x*| to be small so we would be better off choosing |xk - xk-1|. 
 
 %% Review 5.7
 %
@@ -55,14 +55,16 @@
 
 %% Review 5.17
 %
-% ? not sure how to solve...
+% (a) The root has a multiplicity of two. Since this is a multiple root, Newton's method will have a linear convergence rate of C = 1 - (1/2) = 1/2.
+%  
+% (b) In this case, there is not a multiple root so Newton's method will have quadratic convergence.
 
 %% Review 5.20
 %
 %  (a) If x* = g(x*) and |g'(x*)| < 1, the iterative scheme is locally convergent. (p. 227)
 %  (b) The asymptotic vonvergence rate is linear, with C = |g'(x*)| (p. 228[end])
 %  (c) The rate is at least quadratic when g'(x*) = 0. (p. 229)
-%  (d) Yes(?) [what is the function g in this case? if not, why not?]
+%  (d) Yes. g(x) = x - f(x)/f'(x) (p. 230)
 
 %% Review 5.23
 %

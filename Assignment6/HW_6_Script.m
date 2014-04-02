@@ -18,7 +18,7 @@
 
 %% Review 5.5
 %
-% It would be better to use |f(xk)| small than |xk-xk-1| small as a termination criteria. Finding when |f(xk)| (the residual)  is small gives us an idea as to whether or not the problem has actually been solved. |xk+1-xk|/|xk| gives us a good diea of when the approximate solution has stopped changing significantly. The |xk-xk-1| is not as good because it's not relative to |xk-1|. (Conjecture... [???] p. 223)
+% It would be better to use |f(xk)| small than |xk-xk-1| small as a termination criteria. Finding when |f(xk)| (the residual)  is small gives us an idea as to whether or not the problem has actually been solved. |xk+1-xk|/|xk| gives us a good diea of when the approximate solution has stopped changing significantly. The |xk-xk-1| is not as good because it's not relative to |xk-1|. (p. 223)
 
 %% Review 5.7
 %
@@ -41,12 +41,12 @@
 
 %% Review 5.14
 %
-% In this case, r would be sqrt(2). (We would multiply r times itself over the course of two iterations and since sqrt(2)*sqrt(2) = 2, we have our answer). [no page number--verify logic?]
+% In this case, r would be sqrt(2). (We would multiply r times itself over the course of two iterations and since sqrt(2)*sqrt(2) = 2, we have our answer).
 
 %% Review 5.15
 %
-%  (a) A solution is a multiple root if it solves f(x) = 0 as well as a number of it's derivatives f'(x) = f''(x) = ... = 0. (p. 220)
-%  (b) No effect... or can't solve? [guessing. keeps bisecting--not dependent??] [???]
+%  (a) A solution is a multiple root if it solves f(x) = 0 as well as one or more of it's derivatives f'(x) = f''(x) = ... = 0. (p. 220)
+%  (b) The convergence rate remains unchanged. This is because interval bisection does not take into account the derivative and has a constant rate of convergence of log2( (b-a) / tol ) regardless of the nature of the function. (p. 226)
 %  (c) It causes the convergence rate to move from quadratic to linear. (p. 231)
 
 %% Review 5.16

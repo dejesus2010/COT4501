@@ -22,7 +22,8 @@
 
 %% Review 5.7
 %
-% We cannot use a relative condition number because the function value of the solution will be zero. [div by zero??] (p. 221) 
+% We must use an absolute rather than a relative condition number in assessing sensitivity, 
+% because the function value at the solution is zero by definition. 
 
 %% Review 5.8(a)
 %

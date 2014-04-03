@@ -5,8 +5,6 @@ function [root, convergence] = Newton( f, df, x_guess, tol, maxIterations )
     maxIterations = 1e1;
   elseif nargin == 4
     maxIterations = 1e1;
-  elseif nargin == 5
-    error('newton: invalid input parameters');
   end
 
   %f = inline(f);
@@ -15,7 +13,7 @@ function [root, convergence] = Newton( f, df, x_guess, tol, maxIterations )
   convergence(1) = abs(root(1) - x_guess );
   k = 2;
   while ( convergence(k-1) >= tol ) && (k <= maxIterations)
-    root(k) = root(k-1) - (f(root(k-1))/df(x(k-1)));
+    root(k) = root(k-1) - (f(root(k-1))/df(root(k-1)));
     convergence(k) = abs(root(k)-root(k-1));
     k = k+1;
   end

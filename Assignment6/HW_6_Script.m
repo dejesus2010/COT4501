@@ -89,8 +89,8 @@
 %% Review 5.27
 %
 %  1. Bisection (slowest)
-%  2. Secant (faster) [or is it the fastest? consider p. 233 offset]
-%  3. Newton's method (fastest) [verify, as above]
+%  2. Newton's method (faster) [or is it the fastest? consider p. 233 offset]
+%  3. Secant (fastest) [verify, as above]
 
 %% Review 5.28
 %

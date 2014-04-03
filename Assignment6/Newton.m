@@ -20,14 +20,15 @@ function [root, convergence, convergence_rate] = Newton( f, df, x_guess, tol, ma
   while ( rel_change >= tol ) && (k <= maxIterations)
     root = [root;x_guess - (f(x_guess)/df(x_guess))];
     convergence = [convergence; abs(root(k,1)-x_guess)];
-    rel_change = abs( root(k,1) - root(k-1,1) ) / root(k-1,1);
+    rel_change = abs( root(k,1) - root(k-1,1) );
     x_guess = root(k,1);
     k = k+1;
   end
 
   [m,n] = size(convergence);
   sum_of_errors = sum(convergence);
-  convergence_rate = sum_of_errors/convergence(1,1); 
+  convergence_rate = sum_of_errors/convergence(1,1);
+  root = root(k-1,1);
   
   
 

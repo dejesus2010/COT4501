@@ -1,4 +1,4 @@
-function [root, convergence] = Newton( f, df, x_guess, tol, maxIterations )
+function [root, convergence, convergence_rate] = Newton( f, df, x_guess, tol, maxIterations )
 
   if nargin == 3
     tol = 1e-5;
@@ -27,7 +27,7 @@ function [root, convergence] = Newton( f, df, x_guess, tol, maxIterations )
 
   [m,n] = size(convergence);
   sum_of_errors = sum(convergence);
-  convergence_rate = sum_of_errors/convergence(1,1)  
+  convergence_rate = sum_of_errors/convergence(1,1); 
   
   
 

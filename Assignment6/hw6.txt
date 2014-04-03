@@ -1,0 +1,7 @@
+Review 5.
+.2) true
+.3) true ..not sure
+.4) false
+.5) It is better to use |xk - xk-1| because the problem is ill
+	conditioned, a slight change in approximating xk can alter 
+	the output sporadically.

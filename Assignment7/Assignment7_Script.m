@@ -59,6 +59,47 @@
 
 
 %% Computer Problem 6.2
+%  (a) Use l'Hopital's rule to show that f is continuous at x = 0
+
+f = @(x)(0.5);
+g = @(x)((1-cos(x))/x^2);
+
+gnum = @(x)(1-cos(x));
+gden = @(x)(x^2);
+
+%%
+%   function L = LHopitals( gnum, gden )
+%   
+%   syms x; 
+%   
+%   while( limit( gnum, x, 0 ) == 0 && limit( gden, x, 0 ) == 0 )
+%       gnum = sym(gnum);
+%       gnum = matlabFunction( diff(gnum) );
+%       gden = sym(gden);
+%       gden = matlabFunction( diff(gden) );
+%   end while
+%   
+%   L = limit(fnum, x, 0 ) / ( limit( gnum, x, 0 ) / gden );
+%   
+%   L = limit( gnum, x, 0 ) / limit( gden, x , 0 );
+%  
+%   end function
+
+disp( LHopitals( gnum, gden ) );
+syms x;
+disp( limit( f, x, 0) );
+
+disp( 'Because the limit f=0.5 and the limit of g = (1-cos(x))/x^2 are both 1/2, f is continuous at 0');
+
+
+%%
+%  (b)
+%     At x = 0, f(x) = 0.5. We can verify this is a critical point by
+%     solving for f'(x) = 0. Since f'(x) = 0 everywhere and x = 0 is the
+%     only point we're checking, we know x = 0 is a critical point. The
+%     second derivitive test is inconclusive because f''(x) = 0. But, we can
+%     check values very near to x = 0 and see that f(eps) and f(-eps) are 
+%     less than 0.5 and "see" that the function is a maximum.
 
 
 %% Computer Problem 6.3

@@ -1,35 +1,4 @@
 %% Computer Prob 6.2
-syms x;
-% f1 = 0.5;
-
-
-f = @(x)(0.5);
-g = @(x)((1-cos(x))/x^2);
-
-g1 = (1-cos(x))/x^2;
-g2 = x^2;
-
-df = @(x)(0);
-dg = @(x)((sin(x)/x^2)+(2*(cos(x)-1))/x^3);
-
-% dg1 = matlabFunction( diff(g1) )
-
-limit(g1,x,0)
-limit(g2,x,0)
-
-
-limit(f(x),x,0);
-
-limit(g(x),x,0);
-
-
-
-limit(df(x),x,0);
-limit(dg(x),x,0);
-
-limit(df(x),x,0) / limit(dg(x),x,0);
-
-%% Computer Prob 6.2
 % 
 % function L = LHopitals( fnum, gnum, gden )
 %    syms x;

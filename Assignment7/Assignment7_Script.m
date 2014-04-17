@@ -53,11 +53,65 @@
 % iterations. [p. 279]
 
 %% Exercise 6.3
-
-
+	a.) f'(x) = 2x
+		f''(x) = 2
+		f'(0) = 0
+		f''(0) = 2
+		0 is minimum
+	b.) f'(x) = 3x^2
+		f''(x) = 6x
+		f'(0) = 0
+		f''(0) = 0
+		0 is critical point, 2nd order optimally condition is inconclusive
+		0 is inflection point
+	c.) f'(x) = 4x^3
+		f''(x) = 12x^2
+		f'(0) = 0
+		f''(0) = 0
+		0 is critical point, 2nd order optimally condition is inconclusive
+		0 is minimum
+	d.) f'(x) = -4x^3
+		f''(x) = -12x^2
+		f'(0) = 0
+		f''(0) = 0
+		0 is critical point and maximum, 2nd order optimally is inconclusive
+ 
 %% Exercise 6.4
+	a.) f'(x) = 3x^2 + 12x - 15 = 0
+		f''(x) = 6x + 12
+		x1 = 1, x2 = -5
+		f''(x1) = 18 x1 -> local min.
+		f''(x2) = -18 x2 -> local max.
+		no global min or max
+		
+	b.) f'(x) = 6x^2 -50x - 12 = 0
+		f''(x) = 12x - 50
 
+		x1 = (25 + sqrt(697)) / 6
+		x2 = (25 - sqrt(697)) / 6
 
+		f''(x1) = 2 * sqrt(697) x1 -> local min
+		f''(x2) = -2 * sqrt(697) x2 -> local max
+		no global min or max
+
+	c.) f'(x) = 9x^2 + 14x - 15 = 0
+		f''(x) = 18x + 14
+		x1 = (-7 + sqrt(184)) / 9
+		x2 = (-7 - sqrt(184)) / 9
+
+		f''(x1) = 2 * sqrt(184) x1 -> local min
+		f''(x2) = 2 * sqrt(184) x2 -> local max
+
+	d.) f'(x) = 2x*e^x + x^2e^x = e^x(2x + x^2)
+		f''(x) = e^x(x^2 + 4x + 2)
+
+		x1 = 0
+		x2 = -2
+
+		f''(x1) = 2 x1 -> local min
+		f''(x2) = -2e - 2 x2 -> local max
+		no global max, but x1 = 0 is global min
+ 
 %% Computer Problem 6.2
 
 

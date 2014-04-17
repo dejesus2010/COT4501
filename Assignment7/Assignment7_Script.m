@@ -40,8 +40,6 @@
 %      already so we can rule that case out.
 
 %% Review 6.14
-%%
-%
 
 %%
 % 
@@ -77,13 +75,13 @@ gden = @(x)(x^2);
 %       gnum = matlabFunction( diff(gnum) );
 %       gden = sym(gden);
 %       gden = matlabFunction( diff(gden) );
-%   end while
+%   end%while
 %   
 %   L = limit(fnum, x, 0 ) / ( limit( gnum, x, 0 ) / gden );
 %   
 %   L = limit( gnum, x, 0 ) / limit( gden, x , 0 );
 %  
-%   end function
+%   end%function
 
 disp( LHopitals( gnum, gden ) );
 syms x;
@@ -104,33 +102,35 @@ disp( 'Because the limit f=0.5 and the limit of g = (1-cos(x))/x^2 are both 1/2,
 
 %% Computer Problem 6.3
 
+plotf = @(f)plot(0:.01:3,f(0:0.01:3));
+
 %% 
 %  (a)
 fa = @(x) (x.^4 - 14*x.^3 + 60*x.^2 - 70*x);
 a_min = fminbnd(fa,0,3)
 figure(1)
-plot(0:.05:3,fa(0:.05:3))
+plotf(fa)
 
 %%
 %  (b)
 fb = @(x) (0.5*x.^2 - sin(x));
 b_min = fminbnd(fb,0,3)
 figure(2)
-plot(0:.05:3,fb(0:.05:3))
+plotf(fb)
 
 %%
 %  (c)
 fc = @(x) (x.^2 + 4*cos(x));
 c_min = fminbnd(fc,0,3)
 figure(3)
-plot(0:.05:3,fc(0:.05:3))
+plotf(fc)
 
 %% 
 %  (d)
 fd = @(x) (gamma(x));
 d_min = fminbnd(fd,0,3)
 figure(4)
-plot(0:.05:3,fd(0:.05:3))
+plotf(fd)
 
 %%
 % The plots demonstrate that the functions are unimodal because there is only

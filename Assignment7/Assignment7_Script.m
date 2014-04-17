@@ -40,8 +40,6 @@
 %      already so we can rule that case out.
 
 %% Review 6.14
-%%
-%
 
 %%
 % 
@@ -113,37 +111,80 @@
 		no global max, but x1 = 0 is global min
  
 %% Computer Problem 6.2
+%  (a) Use l'Hopital's rule to show that f is continuous at x = 0
+
+f = @(x)(0.5);
+g = @(x)((1-cos(x))/x^2);
+
+gnum = @(x)(1-cos(x));
+gden = @(x)(x^2);
+
+%%
+%   function L = LHopitals( gnum, gden )
+%   
+%   syms x; 
+%   
+%   while( limit( gnum, x, 0 ) == 0 && limit( gden, x, 0 ) == 0 )
+%       gnum = sym(gnum);
+%       gnum = matlabFunction( diff(gnum) );
+%       gden = sym(gden);
+%       gden = matlabFunction( diff(gden) );
+%   end%while
+%   
+%   L = limit(fnum, x, 0 ) / ( limit( gnum, x, 0 ) / gden );
+%   
+%   L = limit( gnum, x, 0 ) / limit( gden, x , 0 );
+%  
+%   end%function
+
+disp( LHopitals( gnum, gden ) );
+syms x;
+disp( limit( f, x, 0) );
+
+disp( 'Because the limit f=0.5 and the limit of g = (1-cos(x))/x^2 are both 1/2, f is continuous at 0');
+
+
+%%
+%  (b)
+%     At x = 0, f(x) = 0.5. We can verify this is a critical point by
+%     solving for f'(x) = 0. Since f'(x) = 0 everywhere and x = 0 is the
+%     only point we're checking, we know x = 0 is a critical point. The
+%     second derivitive test is inconclusive because f''(x) = 0. But, we can
+%     check values very near to x = 0 and see that f(eps) and f(-eps) are 
+%     less than 0.5 and "see" that the function is a maximum.
 
 
 %% Computer Problem 6.3
+
+plotf = @(f)plot(0:.01:3,f(0:0.01:3));
 
 %% 
 %  (a)
 fa = @(x) (x.^4 - 14*x.^3 + 60*x.^2 - 70*x);
 a_min = fminbnd(fa,0,3)
 figure(1)
-plot(0:.05:3,fa(0:.05:3))
+plotf(fa)
 
 %%
 %  (b)
 fb = @(x) (0.5*x.^2 - sin(x));
 b_min = fminbnd(fb,0,3)
 figure(2)
-plot(0:.05:3,fb(0:.05:3))
+plotf(fb)
 
 %%
 %  (c)
 fc = @(x) (x.^2 + 4*cos(x));
 c_min = fminbnd(fc,0,3)
 figure(3)
-plot(0:.05:3,fc(0:.05:3))
+plotf(fc)
 
 %% 
 %  (d)
 fd = @(x) (gamma(x));
 d_min = fminbnd(fd,0,3)
 figure(4)
-plot(0:.05:3,fd(0:.05:3))
+plotf(fd)
 
 %%
 % The plots demonstrate that the functions are unimodal because there is only

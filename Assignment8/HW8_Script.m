@@ -141,9 +141,9 @@ disp('As shown above, both methods produce the same interpolating polynomial.');
 
 %% Computer Problem 7.4
 runge = @(t)(1./(1+25*t.^2));
-t11 = -1:.2:1;
-t21 = -1:.1:1;
-xplot = -1:.001:1;
+t11 = -1:.2:1;%n=11
+t21 = -1:.1:1;%n=21
+xplot = -1:.001:1;% plot helper
 
 %%
 %  Polynomial interpolant: n=11
@@ -179,7 +179,7 @@ plot(xplot,yy,'b-',t21,runge(t21),'ro');
 t = [0 0.5 1 6  7  9];
 y = [0 1.6 2 2 1.5 0];
 
-xplot = 0:.001:9;
+xplot = 0:.001:9;%plot helper
 
 %%
 %  a) Polynomial Fit of Degree 5
@@ -197,24 +197,24 @@ plot(xplot,yy,'b-',t,y,'ro');
 
 %%
 %  c)
-%  The spline seems to give the more reasonable values between data points.
-%  This is because the spline considers a continuous derivative and
-%  curvature across the points which smooths out the connecting curves, but
-%  the polyfit method only ensures that all the points are passed through 
-%  and does not attempt to moderate the derivatve at each point. More
-%  importantly, since the polyfit function is a continuous polynomial, it
-%  is required to have a dip either up or down between the two center
-%  points which share a y value and this introduces undesirable "wiggle".
+%     The spline seems to give the more reasonable values between data points.
+%     This is because the spline considers a continuous derivative and
+%     curvature across the points which smooths out the connecting curves, but
+%     the polyfit method only ensures that all the points are passed through 
+%     and does not attempt to moderate the derivatve at each point. More
+%     importantly, since the polyfit function is a continuous polynomial, it
+%     is required to have a dip either up or down between the two center
+%     points which share a y value and this introduces undesirable "wiggle".
 
 %% 
 %  d) Piecewise Linear Interpolation
-%  Yes, in this case a direct line fit would be more desirable. This is
-%  true because it tends to fit this particular set of data--especially
-%  since there are two consecutive points whose y values are the same...
-%  causing a straight line to be the most logical interpolation here. See
-%  the plot below. This however does come at the cost of jagged edges and a
-%  discontinuous derivative so the ideality of this approach would depend
-%  on the desired smoothness and the application the data is required for.
+%     Yes, in this case a direct line fit would be more desirable. This is
+%     true because it tends to fit this particular set of data--especially
+%     since there are two consecutive points whose y values are the same...
+%     causing a straight line to be the most logical interpolation here. See
+%     the plot below. This however does come at the cost of jagged edges and a
+%     discontinuous derivative so the ideality of this approach would depend
+%     on the desired smoothness and the application the data is required for.
 
 fig7=figure(7);
 plot(t,y,'b-',t,y,'ro');

@@ -9,7 +9,6 @@
 %  b)
 % A least squares approximation is usually a much superior tool for dealing with noisy data. [p. 311] These techniques, however, can sometimes work together. For example, least squares fitting by cubic splines is a good method for smoothing noisy data. [p. 334]
 
-
 %% Review 7.12
 %  a)
 %  1. Lagrange [p. 317]
@@ -61,11 +60,19 @@
 %  2. Forcing equality of the first derivatives as well as equality of the second derivatives at the  endpoints t1 and tn (if the spline is going to be periodic). [p. 327]
 
 %% Exercise 7.1 (skip part c)
+//work out
 
 %% Exercise 7.4 (skip part c)
+%  a)
+%  Using Horner's method, we only n multiplications (and n additions) need to be performed. [p. 316]
+%  b)
+%  2*n ?? 3*n ?? [p. 317]
 
 %% Exercise 7.5 (skip part c)
+//work out?
 
 %% Computer Problem 7.4
 
+
 %% Computer Problem 7.5
+

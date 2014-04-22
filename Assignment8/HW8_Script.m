@@ -41,24 +41,24 @@
 % Hermite interpolation differs from other forms of interpolation in a few ways. First, it is piecewise, meaning that the interpolation is not one continuous function, but rather cubic functions that describe the pathway between two data points. Additionally, it holds the requirement that the derivatives of these functions when they meet must be continuous. The other main difference is that the Hermite cubic interpolant is not unique--free parameters (i.e. the derivative) can be chosen to conform to desired characteristics such as monotonicity or convexity. [p. 327]
 %  
 %  b)
-% 
+% A cubic spline is also a piecewise polynomial, but it requires that (like the Hermite interpolation) the derivative of the polynomials are continuous, but additionally the second derivative is required to be continuous. In the general case, a spline of degree k must be continuously differentiable k-1 times. [p. 327]
 
 %% Review 7.25
 %  a)
-% Cubic spline interpolation should be chosen if maximum smoothness is desired.
+% Cubic spline interpolation should be chosen if maximum smoothness is desired. [p. 329]
 %  b)
-% To preserve monotonicity, a Hermite cubic interpolation should be chosen.
+% To preserve monotonicity, a Hermite cubic interpolation should be chosen. [p. 329]
 
 %% Review 7.26
 %  a)
-% Once.
+%  Once. [p. 327]
 %  b)
-% k-1?
+%  Twice [p. 327]
 
 %% Review 7.27
 %  Possible constraints:
-%  1.
-%  2.
+%  1. Forcing the second derivative to be zero at the endpoints, which would create a natural spline. [p. 327]
+%  2. Forcing equality of the first derivatives as well as equality of the second derivatives at the  endpoints t1 and tn (if the spline is going to be periodic). [p. 327]
 
 %% Exercise 7.1 (skip part c)
 

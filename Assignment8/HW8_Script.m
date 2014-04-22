@@ -90,14 +90,13 @@
 %  at the  endpoints t1 and tn (if the spline is going to be periodic). [p. 327]
 
 %% Exercise 7.1 (skip part c)
-
 %input data
-t = [-1 0 1]';
+t_data = [-1 0 1]';
 y = [1 0 1]';
 
 %a)
 disp('a) Monomial Basis');
-A = [ones(3,1) t(:) t(:).^2]; %vandermonde matrix
+A = [ones(3,1) t_data(:) t_data(:).^2]; %vandermonde matrix
 x = A \ y; %compute coefficients
 disp(['P2(t) = ' num2str(x(3)) '*t^2 + ' num2str(x(2)) '*t + ' num2str(x(1))]);
 
@@ -105,7 +104,20 @@ disp(['P2(t) = ' num2str(x(3)) '*t^2 + ' num2str(x(2)) '*t + ' num2str(x(1))]);
 disp(' ');
 disp('b) Lagrange Basis');
 
-%calculate lagrange??
+%calculate lagrange
+syms t;
+L = 0;
+n = 3;
+for i=1:n
+  l=1;
+  for j = 1:n
+    if i~=j
+      l=l*(t-t_data(j))/(t_data(i)-t_data(j));
+    end
+  end
+  L = L + y(i)*l;
+end
+disp(simplify(L));
 
 %result
 disp(' ');
@@ -120,20 +132,33 @@ disp('As shown above, both methods produce the same interpolating polynomial.');
 
 %% Exercise 7.5 (skip part c)
 %input data
-t = [1 2 3 4]';
+t_data = [1 2 3 4]';
 y = [11 29 65 125]';
 
 %a)
 disp('a) Monomial Basis');
-A = [ones(4,1) t(:) t(:).^2 t(:).^3]; %vandermonde matrix
+A = [ones(4,1) t_data(:) t_data(:).^2 t_data(:).^3]; %vandermonde matrix
 x = A \ y; %compute coefficients
-disp(['P2(t) = ' num2str(x(3)) '*t^2 + ' num2str(x(2)) '*t + ' num2str(x(1))]);
+disp(['P2(t) = ' num2str(x(4)) '*t^3 + ' num2str(x(3)) '*t^2 + ' num2str(x(2)) '*t + ' num2str(x(1))]);
 
 %b)
 disp(' ');
 disp('b) Lagrange Basis');
 
-%calculate lagrange??
+%calculate lagrange
+syms t;
+L = 0;
+n = 4;
+for i=1:n
+  l=1;
+  for j = 1:n
+    if i~=j
+      l=l*(t-t_data(j))/(t_data(i)-t_data(j));
+    end
+  end
+  L = L + y(i)*l;
+end
+disp(simplify(L));
 
 %result
 disp(' ');
@@ -176,7 +201,7 @@ plot(xplot,yy,'b-',t21,runge(t21),'ro');
 
 %% Computer Problem 7.5
 %input data
-t = [0 0.5 1 6  7  9];
+t_data = [0 0.5 1 6  7  9];
 y = [0 1.6 2 2 1.5 0];
 
 xplot = 0:.001:9;%plot helper
@@ -185,15 +210,15 @@ xplot = 0:.001:9;%plot helper
 %  a) Polynomial Fit of Degree 5
 fig5=figure(5);
 
-p = polyfit(t,y,5);
-plot(xplot,polyval(p,xplot),'b-',t,y,'ro');
+p = polyfit(t_data,y,5);
+plot(xplot,polyval(p,xplot),'b-',t_data,y,'ro');
 
 %%
 %  b) Cubic Spline Fit
 fig6=figure(6);
 
-yy = spline(t,y,xplot);
-plot(xplot,yy,'b-',t,y,'ro');
+yy = spline(t_data,y,xplot);
+plot(xplot,yy,'b-',t_data,y,'ro');
 
 %%
 %  c)
@@ -217,4 +242,4 @@ plot(xplot,yy,'b-',t,y,'ro');
 %     on the desired smoothness and the application the data is required for.
 
 fig7=figure(7);
-plot(t,y,'b-',t,y,'ro');
+plot(t_data,y,'b-',t_data,y,'ro');
